@@ -1,0 +1,20 @@
+-   config:
+        name: test_get_request
+        request:
+            base_url: http://httpbin.org/
+-   test:
+        extract:
+        -   response_user: content.args.user
+        name: test_get_request
+        request:
+            method: GET
+            params:
+                user: 51zxw2020
+            url: /get
+        validate:
+        -   check: $response_user
+            comparator: equals
+            expected: 51zxw2020
+        -   check: status_code
+            comparator: equals
+            expected: 200
